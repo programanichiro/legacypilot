@@ -13,6 +13,7 @@ import cereal.messaging as messaging
 from cereal.visionipc import VisionIpcClient, VisionStreamType
 from openpilot.common.conversions import Conversions as CV
 from panda import ALTERNATIVE_EXPERIENCE
+from openpilot.selfdrive.athena.registration import UNREGISTERED_DONGLE_ID
 from openpilot.system.swaglog import cloudlog
 from openpilot.system.version import is_release_branch, get_short_branch
 from openpilot.selfdrive.boardd.boardd import can_list_to_can_capnp
@@ -416,7 +417,7 @@ class Controls:
     # TODO: fix simulator
     if not SIMULATION or REPLAY:
       if not NOSENSOR and not self.dp_no_gps_ctrl:
-        if not self.sm['liveLocationKalman'].gpsOK and self.sm['liveLocationKalman'].inputsOK and (self.distance_traveled > 1000):
+        if os.environ['DONGLE_ID'] != UNREGISTERED_DONGLE_ID and not self.sm['liveLocationKalman'].gpsOK and self.sm['liveLocationKalman'].inputsOK and (self.distance_traveled > 1000 and self.distance_traveled < 3000):
           # Not show in first 1 km to allow for driving out of garage. This event shows after 5 minutes
           self.events.add(EventName.noGps)
 
