@@ -110,6 +110,7 @@ private:
 // container window for the NVG UI
 class AnnotatedCameraWidget : public CameraWidget {
   Q_OBJECT
+#if 0
   Q_PROPERTY(float speed MEMBER speed);
   Q_PROPERTY(QString speedUnit MEMBER speedUnit);
   Q_PROPERTY(float setSpeed MEMBER setSpeed);
@@ -123,7 +124,7 @@ class AnnotatedCameraWidget : public CameraWidget {
   Q_PROPERTY(bool hideBottomIcons MEMBER hideBottomIcons);
   Q_PROPERTY(bool rightHandDM MEMBER rightHandDM);
   Q_PROPERTY(int status MEMBER status);
-
+#endif
 public:
   explicit AnnotatedCameraWidget(VisionStreamType type, QWidget* parent = 0);
   void updateState(const UIState &s);
