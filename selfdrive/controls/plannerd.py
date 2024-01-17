@@ -50,7 +50,7 @@ def plannerd_thread(sm=None, pm=None):
   is_old_model = Params().get_bool("dp_0813")
 
   if sm is None:
-    sm = messaging.SubMaster(['carControl', 'carState', 'controlsState', 'radarState', 'modelV2'],
+    sm = messaging.SubMaster(['carControl', 'carState', 'controlsState', 'radarState', 'modelV2' ,'driverMonitoringState'],
                              poll=['radarState', 'modelV2'], ignore_avg_freq=['radarState'])
 
   if pm is None:
