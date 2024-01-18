@@ -148,7 +148,7 @@ void OnroadWindow::paintEvent(QPaintEvent *event) {
 }
 
 // ***** onroad widgets *****
-//const float BUTTON_VOLUME = 0.35; //setVolumeが効いてないかも。
+const float BUTTON_VOLUME = 0.35; //setVolumeが効いてないかも。
 void setButtonInt(const char*fn , int num);
 void soundPo(){
   static QSoundEffect effect;
@@ -1407,8 +1407,8 @@ void AnnotatedCameraWidget::drawHud(QPainter &p) {
 
   QColor speed_waku;
   if(red_signal_scan_flag >= 1/*== 1*/){
-    if(speed > 45 && clipped_brightness0 >= 90 //昼は45超を信頼度低いとする。
-      || speed > 65 && clipped_brightness0 < 90){ //夜は65超を信頼度低いとする。
+    if((speed > 45 && clipped_brightness0 >= 90) //昼は45超を信頼度低いとする。
+      || (speed > 65 && clipped_brightness0 < 90)){ //夜は65超を信頼度低いとする。
       speed_waku = QColor(171, 171, 0 , 255);
     } else {
       speed_waku = QColor(0xff, 0, 0 , 255);
