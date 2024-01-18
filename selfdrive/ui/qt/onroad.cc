@@ -363,10 +363,10 @@ ButtonsWindow::ButtonsWindow(QWidget *parent , MapSettingsButton *map_settings_b
         btns_layoutBB->addSpacerItem(spacerItem);
     }
     { //制限速度標識ボタン
-      T1_Button = new QPushButton("⚪︎"); //"⚫︎⚪︎⬇︎"
+      T1_Button = new QPushButton("○"); //"⚫︎⚪︎⬇︎"
       Limit_speed_mode = getButtonInt("/data/limitspeed_sw.txt",0);
       if(Limit_speed_mode == 1){
-        T1_Button->setText("⚫︎"); //自動設定モード
+        T1_Button->setText("●"); //自動設定モード
       } else if(Limit_speed_mode == 2){
         T1_Button->setText("⬇︎"); //RECモード
       }
@@ -387,19 +387,19 @@ ButtonsWindow::ButtonsWindow(QWidget *parent , MapSettingsButton *map_settings_b
       Knight_scanner = getButtonInt("/data/knight_scanner_bit3.txt",7);
       std::string btn_str = "";
       if(Knight_scanner & 0x1){
-        btn_str += "⚫︎";
+        btn_str += "●";
       } else {
-        btn_str += "⚪︎";
+        btn_str += "○";
       }
       if(Knight_scanner & 0x2){
-        btn_str += "⚫︎";
+        btn_str += "●";
       } else {
-        btn_str += "⚪︎";
+        btn_str += "○";
       }
       if(Knight_scanner & 0x4){
-        btn_str += "⚫︎";
+        btn_str += "●";
       } else {
-        btn_str += "⚪︎";
+        btn_str += "○";
       }
       QPushButton *T2_Button = new QPushButton(btn_str.c_str()); //"⚫︎⚫︎⚫︎"
       btns_layoutBB->addWidget(T2_Button);
@@ -412,19 +412,19 @@ ButtonsWindow::ButtonsWindow(QWidget *parent , MapSettingsButton *map_settings_b
         setButtonInt("/data/knight_scanner_bit3.txt",Knight_scanner);
         std::string btn_str = "";
         if(Knight_scanner & 0x1){
-          btn_str += "⚫︎";
+          btn_str += "●";
         } else {
-          btn_str += "⚪︎";
+          btn_str += "○";
         }
         if(Knight_scanner & 0x2){
-          btn_str += "⚫︎";
+          btn_str += "●";
         } else {
-          btn_str += "⚪︎";
+          btn_str += "○";
         }
         if(Knight_scanner & 0x4){
-          btn_str += "⚫︎";
+          btn_str += "●";
         } else {
-          btn_str += "⚪︎";
+          btn_str += "○";
         }
         T2_Button->setText(btn_str.c_str());
         if(Knight_scanner){
@@ -499,7 +499,7 @@ ButtonsWindow::ButtonsWindow(QWidget *parent , MapSettingsButton *map_settings_b
     }
 #endif
   }
-  btns_layout00->setContentsMargins(0, 30+40, 0, 0);
+  btns_layout00->setContentsMargins(0, 30+20, 0, 0);
 
   QWidget *btns_wrapper0L = new QWidget;
   QHBoxLayout *btns_layout0L  = new QHBoxLayout(btns_wrapper0L);
