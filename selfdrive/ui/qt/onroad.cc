@@ -499,7 +499,7 @@ ButtonsWindow::ButtonsWindow(QWidget *parent , MapSettingsButton *map_settings_b
     }
 #endif
   }
-  btns_layout00->setContentsMargins(0, 30, 0, 0);
+  btns_layout00->setContentsMargins(0, 30+100, 0, 0);
 
   QWidget *btns_wrapper0L = new QWidget;
   QHBoxLayout *btns_layout0L  = new QHBoxLayout(btns_wrapper0L);
@@ -1171,6 +1171,7 @@ void AnnotatedCameraWidget::updateState(const UIState &s) {
   if (sm.frame % (UI_FREQ / 2) == 0) {
     dmActive = sm["driverMonitoringState"].getDriverMonitoringState().getIsActiveMode();
     rightHandDM = sm["driverMonitoringState"].getDriverMonitoringState().getIsRHD();
+    map_settings_btn->setVisible(true); //他のボタンの位置へ影響するので、出しっぱなしにする。
   }
   #endif
 }
@@ -1458,6 +1459,10 @@ void AnnotatedCameraWidget::drawHud(QPainter &p) {
     int x = false /*rightHandDM*/ ? width() - offset : offset;
     int y = height() - offset;
     drawIcon(p, QPoint(x, y), dm_img, blackColor(70), dmActive ? 1.0 : 0.2);
+    if(rightHandDM){ //ボタンを移動できないので、アイコンはそのまま、左肩に"R"を表示。
+      painter.setFont(InterFont(70, QFont::Bold));
+      drawText(painter, x - btn_size / 2, y - btn_size / 4, "R" , dmActive ? 200 : 100);
+    }
   }
 
   p.setFont(InterFont(66));
