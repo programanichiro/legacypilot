@@ -1460,8 +1460,8 @@ void AnnotatedCameraWidget::drawHud(QPainter &p) {
     int y = height() - offset;
     drawIcon(p, QPoint(x, y), dm_img, blackColor(70), dmActive ? 1.0 : 0.2);
     if(rightHandDM){ //ボタンを移動できないので、アイコンはそのまま、左肩に"R"を表示。
-      painter.setFont(InterFont(70, QFont::Bold));
-      drawText(painter, x - btn_size / 2, y - btn_size / 4, "R" , dmActive ? 200 : 100);
+      p.setFont(InterFont(70, QFont::Bold));
+      drawText(p, x - btn_size / 2, y - btn_size / 4, "R" , dmActive ? 200 : 100);
     }
   }
 
