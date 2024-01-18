@@ -499,7 +499,7 @@ ButtonsWindow::ButtonsWindow(QWidget *parent , MapSettingsButton *map_settings_b
     }
 #endif
   }
-  btns_layout00->setContentsMargins(0, 30-10, 0, 0);
+  btns_layout00->setContentsMargins(0, 30-20, 0, 0);
 
   QWidget *btns_wrapper0L = new QWidget;
   QHBoxLayout *btns_layout0L  = new QHBoxLayout(btns_wrapper0L);
