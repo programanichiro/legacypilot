@@ -499,7 +499,7 @@ ButtonsWindow::ButtonsWindow(QWidget *parent , MapSettingsButton *map_settings_b
     }
 #endif
   }
-  btns_layout00->setContentsMargins(0, 30, 0, 0);
+  btns_layout00->setContentsMargins(0, 30-10, 0, 0);
 
   QWidget *btns_wrapper0L = new QWidget;
   QHBoxLayout *btns_layout0L  = new QHBoxLayout(btns_wrapper0L);
@@ -861,9 +861,9 @@ void ButtonsWindow::MAX_touch(){
   setButtonInt("/data/limitspeed_sw.txt" , Limit_speed_mode);
   soundButton(Limit_speed_mode);
   if(Limit_speed_mode == 0){
-    T1_Button->setText("⚪︎");
+    T1_Button->setText("○");
   } else if(Limit_speed_mode == 1){
-    T1_Button->setText("⚫︎"); //自動設定モード
+    T1_Button->setText("●"); //自動設定モード
   } else if(Limit_speed_mode == 2){
     T1_Button->setText("⬇︎"); //RECモード
   }
