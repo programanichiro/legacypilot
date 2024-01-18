@@ -4,6 +4,7 @@
 #include <cmath>
 #include <map>
 #include <memory>
+#include <sstream>
 
 #include <QSoundEffect>
 #include <QDebug>
@@ -18,7 +19,6 @@
 
 #define PI0_DEBUG false
 #define RAD2DEG(x) ((x) * 180.0 / M_PI)
-#include "/system/comma/usr/include/c++/v1/iosfwd"
 
 static void drawIcon(QPainter &p, const QPoint &center, const QPixmap &img, const QBrush &bg, float opacity) {
   p.setRenderHint(QPainter::Antialiasing);
