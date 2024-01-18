@@ -1185,7 +1185,7 @@ static float global_angle_steer0 = 0;
 static float clipped_brightness0 = 101; //初回ファイルアクセスさせるため、わざと101
 static float global_fps;
 bool add_v_by_lead;
-extern int limit_speed_auto_detect;
+int limit_speed_auto_detect; //map.ccから参照あり
 void AnnotatedCameraWidget::drawHud(QPainter &p) {
   p.save();
   int y_ofs = 150;
