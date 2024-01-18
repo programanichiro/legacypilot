@@ -5,6 +5,7 @@
 #include <map>
 #include <memory>
 
+#include <QSoundEffect>
 #include <QDebug>
 #include <QMouseEvent>
 
@@ -150,15 +151,39 @@ void OnroadWindow::paintEvent(QPaintEvent *event) {
 //const float BUTTON_VOLUME = 0.35; //setVolumeが効いてないかも。
 void setButtonInt(const char*fn , int num);
 void soundPo(){
-  setButtonInt("/tmp/sound_py_request.txt" , 101); //po.wav
+  static QSoundEffect effect;
+  static bool once = false;
+  if(once == false){
+    once = true;
+    effect.setSource(QUrl::fromLocalFile("../assets/sounds/po.wave"));
+    effect.setLoopCount(0);
+    effect.setVolume(1.0*BUTTON_VOLUME);
+  }
+  effect.play();
 }
 
 void soundPipo(){
-  setButtonInt("/tmp/sound_py_request.txt" , 102); //pipo.wav
+  static QSoundEffect effect;
+  static bool once = false;
+  if(once == false){
+    once = true;
+    effect.setSource(QUrl::fromLocalFile("../assets/sounds/pipo.wave"));
+    effect.setLoopCount(0);
+    effect.setVolume(0.8*BUTTON_VOLUME);
+  }
+  effect.play();
 }
 
 void soundPikiri(){
-  setButtonInt("/tmp/sound_py_request.txt" , 103); //pikiri.wav
+  static QSoundEffect effect;
+  static bool once = false;
+  if(once == false){
+    once = true;
+    effect.setSource(QUrl::fromLocalFile("../assets/sounds/pikiri.wave"));
+    effect.setLoopCount(0);
+    effect.setVolume(0.6*BUTTON_VOLUME);
+  }
+  effect.play();
 }
 
 void soundButton(int onOff){
@@ -2145,23 +2170,41 @@ void AnnotatedCameraWidget::knightScanner(QPainter &p) {
   if(signal_start_prompt_info_txt.empty() == false){
     int pr = std::stoi(signal_start_prompt_info_txt);
     if(pr == 1){
-      setButtonInt("/tmp/sound_py_request.txt" , 6); //prompt.wav
+      static QSoundEffect effect;
+      static bool once = false;
+      if(once == false){
+        once = true;
+        effect.setSource(QUrl::fromLocalFile("../assets/sounds/prompt.wave"));
+        //effect.setLoopCount(QSoundEffect::Infinite);
+        effect.setLoopCount(0);
+        effect.setVolume(0.7);
+      }
+      effect.play();
       setButtonEnabled0("/tmp/signal_start_prompt_info.txt" , false);
     } else if(pr == 2){ //自動発進とワンペダル->オートパイロットはこちら。
-      setButtonInt("/tmp/sound_py_request.txt" , 1); //engage.wav
+      static QSoundEffect effect;
+      static bool once = false;
+      if(once == false){
+        once = true;
+        effect.setSource(QUrl::fromLocalFile("../assets/sounds/engage.wave"));
+        //effect.setLoopCount(QSoundEffect::Infinite);
+        effect.setLoopCount(0);
+        effect.setVolume(0.7);
+      }
+      effect.play();
       setButtonEnabled0("/tmp/signal_start_prompt_info.txt" , false);
     } else if(pr == 3){ //デバッグ用。
-      // static QSoundEffect effect;
-      // static bool once = false;
-      // if(once == false){
-      //   once = true;
-      //   effect.setSource(QUrl::fromLocalFile("../assets/sounds/po.wav"));
-      //   //effect.setLoopCount(QSoundEffect::Infinite);
-      //   effect.setLoopCount(0);
-      //   effect.setVolume(1.0);
-      // }
-      // effect.play();
-      setButtonInt("/tmp/sound_py_request.txt" , 101); //po.wav
+      static QSoundEffect effect;
+      static bool once = false;
+      if(once == false){
+        once = true;
+        effect.setSource(QUrl::fromLocalFile("../assets/sounds/po.wave"));
+        //effect.setLoopCount(QSoundEffect::Infinite);
+        effect.setLoopCount(0);
+        effect.setVolume(1.0);
+      }
+      effect.play();
+      //setButtonInt("/tmp/sound_py_request.txt" , 101); //po.wav
       setButtonEnabled0("/tmp/signal_start_prompt_info.txt" , false);
     }
   }
